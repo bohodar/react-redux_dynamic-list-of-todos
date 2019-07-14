@@ -1,1 +1,1 @@
-﻿Hey! **[Here's Preview!](http://bohodar.github.io/react-redux_dynamic-list-of-posts)**
+﻿Hey! **[Here's Preview!](http://bohodar.github.io/react-redux_dynamic-list-of-todos)**
