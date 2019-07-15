@@ -1,10 +1,100 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #c4c4c4;
+}
+#root {
+  display: flex;
+  justify-content: center;
+
+}
+.main-wrapper {
+  width: 60%;
+  min-height: 60vh;
+  margin-top: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: white;
+  box-shadow: 0 0 22px #555;
+}
+.todolist-wrapper {
+  margin: 10px 40px;
+  border-collapse: collapse;
+  text-align: center;
+
+  border-left: 2px solid #ddd;
+  border-right: 2px solid #ddd;
+}
+.todolist-wrapper thead th {
+  padding: 6px 8px;
+  cursor: pointer;
+}
+.todolist-wrapper thead tr {
+  background-color: #555555;
+  color: #fff;
+}
+.todolist td {
+  padding: 4px 0;
+  border-bottom: 1px solid #d0d0d0;
+}
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.header .t {
+  font-weight: bold;
+}
+.header .t1 {
+  font-size: .85em;
+}
+.header .t2 {
+  font-size: .65em;
+}
+.header__textblock {
+  display: flex;
+  justify-content: center;
+
+  padding: 4px 10px;
+}
+.todolist {
+  list-style: none;
+  padding-left: 0;
+}
+.todoitem--completed {
+  text-decoration: line-through;
+}
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  cursor: pointer;
+
+  margin: 20px 0 40px;
+
+  border-radius: 40%;
+}
+.loader span {
+  padding-bottom: 40px;
+}
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+  animation: App-logo-spin infinite 6s linear;
+  height: 30vmin;
   pointer-events: none;
 }
-
-
+.loader:active {
+  background-color: rgba(93, 93, 93, 0.04);
+  box-shadow: 0 0 6px 0 #d0d0d0;
+  outline: #c4c4c4;
+}
+.loader:active span {
+  transform: scale(0.97);
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
