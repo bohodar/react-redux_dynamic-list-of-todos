@@ -1,6 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { getUsers, getTodos } from './api/api';
+import { setTodos } from './redux/todosReducer'
+import { setUsers } from './redux/usersReducer'
+import { loading } from './redux/loadingReducer'
 
 import Header from './components/Header'
 import TodoList from './components/TodoList'
@@ -9,15 +13,15 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
-  async loadingData() {
-    const { startLoading, finishLoading, setUsers, setTodos } = this.props;
-    startLoading();
+  loadingData = async () => {
+    const { loading, setUsers, setTodos } = this.props;
+    loading(true);
     const users = await getUsers();
     const todos = await getTodos();
     setUsers(users);
     setTodos(todos);
-    finishLoading();
-  }
+    loading(false);
+  };
 
   render () {
     const { isLoading, isDataLoaded } = this.props;
@@ -26,7 +30,7 @@ class App extends React.Component {
         <Header />
         {!isDataLoaded ?
           ( <div
-            onClick={() => this.loadingData()}
+            onClick={this.loadingData}
             className="loader">
               <img
                 src={logo}
@@ -50,12 +54,9 @@ const mapState = (state) => {
     isDataLoaded: state.isDataLoaded
   }
 };
-const mapDispatch = (dispatch) => {
-  return {
-    startLoading: () => dispatch({type: 'START_LOADING'}),
-    finishLoading: () => dispatch({type: 'FINISH_LOADING'}),
-    setTodos: (todos) => dispatch({type: 'SET_TODOS', todos: todos}),
-    setUsers: (users) => dispatch({type: 'SET_USERS', users: users}),
-  }
+const mapDispatch = {
+    loading,
+    setTodos,
+    setUsers
 };
 export default connect(mapState, mapDispatch)(App);

@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from "react-redux";
+import { toggleInput } from '../redux/todosReducer'
 
 const TodoItem = ({ users, todo, toggleInput}) => {
   return (
@@ -27,11 +28,7 @@ const TodoItem = ({ users, todo, toggleInput}) => {
   )
 };
 
-const mapDispatch = (dispatch) => {
-  return {
-    toggleInput: (id) => dispatch({ type: "TOGGLE_INPUT", todoId: id}),
-  }
-};
+const mapDispatch = { toggleInput };
 
 const mapState = (state) => {
   return {

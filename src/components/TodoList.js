@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
 import TodoItem from './TodoItem';
+import {sortTodos} from '../redux/todosReducer'
 
 const TodoList = ({ todos, users, sortedTodos, sortTodos }) => {
   const [test, toggleTest] = useState(0);
@@ -31,15 +32,6 @@ const mapState = (state) => {
     sortedTodos: state.sortedTodos
   }
 };
-const mapDispatch = (dispatch) => {
-  return {
-    sortTodos: (type, todos, users = []) => dispatch({
-      type: "SORT_TODOS",
-      sortType: type,
-      primaryTodos: todos,
-      users: users
-    })
-  }
-};
+const mapDispatch = { sortTodos };
 
 export default connect(mapState, mapDispatch)(TodoList);
